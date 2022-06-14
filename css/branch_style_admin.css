@@ -1,0 +1,55 @@
+/*Custom Css For Branch Admin Starts here*/
+
+.navbar {
+  background-color: #575a63 !important;
+}
+.ace-nav > li.open.light-blue > a {
+  background-color: #575a63 !important;
+}
+
+.ace-nav > li.light-blue > a {
+  background-color: #575a63;
+}
+
+.ace-nav > li.light-blue > a:hover,
+.ace-nav > li.light-blue > a:focus {
+  background-color: #575a63 !important;
+}
+.ace-nav > li.light-blue > a {
+  background-color: #575a63 !important;
+}
+
+.wizard-steps li .step {
+  background-color: #fff;
+  border: 5px solid #44dbff !important;
+  border-radius: 100%;
+  color: #546474;
+  display: inline-block;
+  font-size: 15px;
+  height: 40px;
+  line-height: 30px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 2;
+}
+.wizard-steps li::before {
+  border-top: 4px solid #44dbff !important;
+  content: "";
+  display: block;
+  font-size: 0;
+  height: 1px;
+  overflow: hidden;
+  position: relative;
+  top: 21px;
+  width: 100%;
+  z-index: 1;
+}
+
+.wizard-steps li.active::before,
+.wizard-steps li.complete::before,
+.wizard-steps li.active .step,
+.wizard-steps li.complete .step {
+  border-color: #6c2ab4 !important;
+}
+/*Custom Css For Branch Admin Ends here*/
