@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Coronation Insurance Plc:Buy your Motor insurance,Marine insurance online :: Login</title>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/jquery-2.0.3.min.js"></script>
+<script src="../assets/css/bootstrap/js/bootstrap.js"></script>
+
+<body>
+    <header role="banner">
+        <div class="container">
+            <div class="navbar-headers navbar-right">
+
+                <!-- <a href="https://my.coronationinsurance.com.ng/devtest/" class="navbar-brands"><img src="https://my.coronationinsurance.com.ng/devtest/assets/img/alogo.png" alt="logo" title=""></a> -->
+            </div>
+        </div>
+    </header>
+    <hr class="style-two">
+    <div class="open-page">
+        <div class="container">
+            <div class="extra-container">
+                <div class="banner-pod mtop90">
+                    <div class="banner-text mtop90">
+                        <h3 class="white-color mtop70">Welcome to Coronation Insurance<br> Admin</h3>
+                        <p class="text-justify white-color h5 mtop20">Secure access to your policy information 24/7.
+                            Sign in or register to file your claim online, enroll in claims direct deposit, check your
+                            claim status and more.</p>
+                    </div>
+                </div>
+                <div class="logBox">
+                    <div class="mtop90">
+                        <div id="first">
+                            <div class="logBox-topColor">
+                                <h3 class="white-color"><strong>Log In</strong></h3>
+                            </div>
+                            <div class="logBox-bg">
+                                <form method="post" action="https://my.coronationinsurance.com.ng/devtest/admin/login">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="username"
+                                            placeholder="Email">
+                                        <span style="color:red"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="exampleInputPassword1"
+                                            name="password" placeholder="Password">
+                                        <span style="color:red"></span>
+
+                                    </div>
+
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio"> Remember User ID
+                                        </label>
+                                    </div>
+                                    <p class="h6">Do not select the "Remember User ID" button if you are on a public or
+                                        share computer</p>
+                                    <div class="clearfix"></div>
+                                    <div class="btnBox">
+                                        <button type="submit" class="btn btn-perpale">login</button>
+                                    </div>
+                                    <div class="text-center mtop20"> <a href="#" id="signup" class="signup"
+                                            style="font-size:18px"><span>Forgot Password</span></a></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="second" style="display:none">
+                            <div class="logBox-topColor">
+                                <h3 class="white-color"><strong>Retrieve Password </strong></h3>
+                            </div>
+                            <div class="logBox-bg">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="forgot-password-email"
+                                            name="username" placeholder="Email">
+                                        <span style="color:red"></span>
+                                    </div>
+                                    <div class="radio">
+                                        <div id="notifyMsg"></div>
+                                    </div>
+                                    <p class="h6"></p>
+                                    <div class="clearfix"></div>
+                                    <span style="margin-top:25px" class="pull-left" id="alert-loading"></span>
+                                    <div class="btnBox">
+                                        <button type="submit" id="submit-button" class="btn btn-perpale">Submit</button>
+                                    </div>
+                                    <div class="text-center mtop20"> <a href="#" class="signin" id="signin"
+                                            style="font-size:18px"><span>Back to Login</span></a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="banner-up"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // On Click SignUp It Will Hide Login Form and Display Registration Form
+            $("#signup").click(function () {
+                $("#first").slideUp("slow", function () {
+                    $("#second").css('visibility', 'visible');
+                    $("#second").slideDown("slow");
+
+                });
+            });
+            // On Click SignIn It Will Hide Registration Form and Display Login Form
+            $("#signin").click(function () {
+                $("#second").slideUp("slow", function () {
+                    $("#second").css('visibility', 'hidden');
+                    $("#first").slideDown("slow");
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        var EMAIL = new RegExp(/^[_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6}$/);
+        $(document).ready(function () {
+            $("#submit-button").click(function () {
+                var em = $('#forgot-password-email').val();
+                if (EMAIL.test(em)) {
+
+                    $("#alert-loading").html('<img src="https://my.coronationinsurance.com.ng/devtest/assets/images/ajax-loader2.gif" style="margin-left:10px; border:none" />');
+                    $.ajax({
+                        type: "post",
+                        url: "https://my.coronationinsurance.com.ng/devtest/user/login/check_email",
+                        data: "email=" + em,
+                        async: false,
+                        success: function (res) {
+                            if (res == 'yes') {
+                                $('#notifyMsg').html('<span style="color:green;font-size:18px"><span class="glyphicon glyphicon-ok"></span> Password reset instructions have been sent to your email address.</span>');
+                                $("#forgot-password-email").val('');
+                            } else
+                                $('#notifyMsg').html('<span style="color:red;font-size:18px"><span class="glyphicon glyphicon-remove"></span> Sorry, your email address is not registered.</span>');
+                            return false;
+                        }
+                    });
+                    $("#alert-loading").html('');
+                } else
+                    $('#notifyMsg').html('<span style="color:red;font-size:18px"><span class="glyphicon glyphicon-remove"></span> Please enter a valid email address.</span>');
+                //setTimeout(function(){$('#notifyMsg').fadeOut();}, 10000);
+                return false;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
